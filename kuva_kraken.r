@@ -30,14 +30,14 @@ build <- function(ppg = 1.87, ptc = 1.1, hornet = 2.2, barrel = 1.2, lt = 0.6, a
   
   quantum <- (modded_imp + modded_punc + modded_sl + modded_mag)/16
   
-  inflicted_imp <- round(base_impact*(1 + hornet - ifelse(anemic != 0, 0.15, 0) + dmg + vig_swap - neg_impact)/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless)*dmg_modifiers[1]
-  inflicted_punc <- round(base_puncture*(1 + hornet - ifelse(anemic != 0, 0.15, 0) + dmg + vig_swap - neg_punc)/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless)*dmg_modifiers[2]
-  inflicted_sl <- round(base_slash*(1 + hornet - ifelse(anemic != 0, 0.15, 0) + dmg + vig_swap - neg_sl)/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless)*dmg_modifiers[3]
-  inflicted_mag <- round(modded_mag/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless)*dmg_modifiers[4]
-  inflicted_elec <- round(modded_elec/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless)*dmg_modifiers[5]
-  inflicted_corro <- round(modded_corro/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless)*dmg_modifiers[6]
-  inflicted_viral <- round(modded_viral/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless)*dmg_modifiers[7]
-  inflicted_heat <- round(modded_heat/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless)*dmg_modifiers[8]
+  inflicted_imp <- round(base_impact*(1 + hornet - ifelse(anemic != 0, 0.15, 0) + dmg + vig_swap - neg_impact)/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless*0.25)*dmg_modifiers[1]
+  inflicted_punc <- round(base_puncture*(1 + hornet - ifelse(anemic != 0, 0.15, 0) + dmg + vig_swap - neg_punc)/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless*0.25)*dmg_modifiers[2]
+  inflicted_sl <- round(base_slash*(1 + hornet - ifelse(anemic != 0, 0.15, 0) + dmg + vig_swap - neg_sl)/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless*0.25)*dmg_modifiers[3]
+  inflicted_mag <- round(modded_mag/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless*0.25)*dmg_modifiers[4]
+  inflicted_elec <- round(modded_elec/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless*0.25)*dmg_modifiers[5]
+  inflicted_corro <- round(modded_corro/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless*0.25)*dmg_modifiers[6]
+  inflicted_viral <- round(modded_viral/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless*0.25)*dmg_modifiers[7]
+  inflicted_heat <- round(modded_heat/quantum,digits = 0)*quantum*(1 + ability_str*1.5*eclipse_light)*(1 + dtc + expel + bless*0.25)*dmg_modifiers[8]
 
   return_frame <- data.frame(cc = modded_cc, cd = modded_cd, ms = modded_ms, fr = modded_fr, impact = inflicted_imp, puncture = inflicted_punc, slash = inflicted_sl, mag = inflicted_mag)
   if(viral == 1) return_frame <- data.frame(return_frame, viral = inflicted_viral, heat = inflicted_heat)
